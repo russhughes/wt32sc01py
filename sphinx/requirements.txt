@@ -1,0 +1,7 @@
+# additional sphinx plug-ins, install using pip3
+sphinx
+sphinx-prompt
+sphinxcontrib.napoleon
+sphinxcontrib.napoleon
+sphinxcontrib.globalsubs
+sphinx_rtd_theme

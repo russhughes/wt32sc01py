@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>wt32sc01py Reference &mdash; wt32sc01py 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example Programs" href="examples.html" />
+    <link rel="prev" title="WT32SC01 Plus Driver" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            wt32sc01py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">WT32SC01 Plus Driver</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">wt32sc01py Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#wt32sc01py.color565"><code class="docutils literal notranslate"><span class="pre">color565()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wt32sc01py.WT32SC01"><code class="docutils literal notranslate"><span class="pre">WT32SC01</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.hard_reset"><code class="docutils literal notranslate"><span class="pre">WT32SC01.hard_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.soft_reset"><code class="docutils literal notranslate"><span class="pre">WT32SC01.soft_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.sleep_mode"><code class="docutils literal notranslate"><span class="pre">WT32SC01.sleep_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.inversion_mode"><code class="docutils literal notranslate"><span class="pre">WT32SC01.inversion_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.rotation"><code class="docutils literal notranslate"><span class="pre">WT32SC01.rotation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.vline"><code class="docutils literal notranslate"><span class="pre">WT32SC01.vline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.hline"><code class="docutils literal notranslate"><span class="pre">WT32SC01.hline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.pixel"><code class="docutils literal notranslate"><span class="pre">WT32SC01.pixel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.blit_buffer"><code class="docutils literal notranslate"><span class="pre">WT32SC01.blit_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.rect"><code class="docutils literal notranslate"><span class="pre">WT32SC01.rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.fill_rect"><code class="docutils literal notranslate"><span class="pre">WT32SC01.fill_rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.fill"><code class="docutils literal notranslate"><span class="pre">WT32SC01.fill()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.clear"><code class="docutils literal notranslate"><span class="pre">WT32SC01.clear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.line"><code class="docutils literal notranslate"><span class="pre">WT32SC01.line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.vscrdef"><code class="docutils literal notranslate"><span class="pre">WT32SC01.vscrdef()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.vscsad"><code class="docutils literal notranslate"><span class="pre">WT32SC01.vscsad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.text"><code class="docutils literal notranslate"><span class="pre">WT32SC01.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.bitmap"><code class="docutils literal notranslate"><span class="pre">WT32SC01.bitmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.write"><code class="docutils literal notranslate"><span class="pre">WT32SC01.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wt32sc01py.WT32SC01.write_width"><code class="docutils literal notranslate"><span class="pre">WT32SC01.write_width()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#lines-py">lines.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#hello-py">hello.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#feathers-py">feathers.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#fonts-py">fonts.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#scroll-py">scroll.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#toasters-py">toasters.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#chango-py">chango.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#noto-fonts-py">noto_fonts.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fonts.html">Fonts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fonts.html#rom-font-conversion">Rom Font Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonts.html#true-type-font-conversion">True-Type Font Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonts.html#x8-rom-fonts">8x8 Rom Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonts.html#x16-rom-fonts">8x16 Rom Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonts.html#id1">16x16 Rom Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonts.html#x32-rom-fonts">16x32 Rom Fonts</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">wt32sc01py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">wt32sc01py Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/wt32sc01py.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-wt32sc01py">
+<span id="wt32sc01py-reference"></span><h1>wt32sc01py Reference<a class="headerlink" href="#module-wt32sc01py" title="Permalink to this heading"></a></h1>
+<p>Copyright (c) 2020-2023 Russ Hughes</p>
+<p>This file incorporates work covered by the following copyright and
+permission notice and is licensed under the same terms:</p>
+<p>The MIT License (MIT)</p>
+<p>Copyright (c) 2019 Ivan Belokobylskiy</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+<p>The driver is based on devbis’ st7789py_mpy module from
+<a class="reference external" href="https://github.com/devbis/st7789py_mpy">https://github.com/devbis/st7789py_mpy</a>.</p>
+<p>This driver adds support for:</p>
+<ul class="simple">
+<li><p>WT32-SC01 Plus 480x320 TFT LCD display</p></li>
+<li><p>Display rotation</p></li>
+<li><p>Hardware based scrolling</p></li>
+<li><p>Drawing text using 8 and 16 bit wide bitmap fonts with heights that are
+multiples of 8.  Included are 12 bitmap fonts derived from classic pc
+BIOS text mode fonts.</p></li>
+<li><p>Drawing text using converted TrueType fonts.</p></li>
+<li><p>Drawing converted bitmaps</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="wt32sc01py.color565">
+<span class="sig-prename descclassname"><span class="pre">wt32sc01py.</span></span><span class="sig-name descname"><span class="pre">color565</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">red</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#color565"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.color565" title="Permalink to this definition"></a></dt>
+<dd><p>Convert red, green and blue values (0-255) into a 16-bit 565 encoding.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wt32sc01py.</span></span><span class="sig-name descname"><span class="pre">WT32SC01</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[72,</span> <span class="pre">40,</span> <span class="pre">136,</span> <span class="pre">232]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01" title="Permalink to this definition"></a></dt>
+<dd><p>WT32SC01 driver class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rotation</strong> (<em>int</em>) – display rotation
+- 0-Portrait
+- 1-Landscape
+- 2-Inverted Portrait
+- 3-Inverted Landscape</p></li>
+<li><p><strong>rotations</strong> (<em>list</em>) – list of rotation values</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.hard_reset">
+<span class="sig-name descname"><span class="pre">hard_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.hard_reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.hard_reset" title="Permalink to this definition"></a></dt>
+<dd><p>Hard reset display.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.soft_reset">
+<span class="sig-name descname"><span class="pre">soft_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.soft_reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.soft_reset" title="Permalink to this definition"></a></dt>
+<dd><p>Soft reset display.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.sleep_mode">
+<span class="sig-name descname"><span class="pre">sleep_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.sleep_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.sleep_mode" title="Permalink to this definition"></a></dt>
+<dd><p>Enable or disable display sleep mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>bool</em>) – if True enable sleep mode. if False disable sleep</p></li>
+<li><p><strong>mode</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.inversion_mode">
+<span class="sig-name descname"><span class="pre">inversion_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.inversion_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.inversion_mode" title="Permalink to this definition"></a></dt>
+<dd><p>Enable or disable display inversion mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>bool</em>) – if True enable inversion mode. if False disable</p></li>
+<li><p><strong>mode</strong> (<em>inversion</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.rotation">
+<span class="sig-name descname"><span class="pre">rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.rotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.rotation" title="Permalink to this definition"></a></dt>
+<dd><p>Set display rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rotation</strong> (<em>int</em>) – <ul class="simple">
+<li><p>0-Portrait</p></li>
+<li><p>1-Landscape</p></li>
+<li><p>2-Inverted Portrait</p></li>
+<li><p>3-Inverted Landscape</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.vline">
+<span class="sig-name descname"><span class="pre">vline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.vline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.vline" title="Permalink to this definition"></a></dt>
+<dd><p>Draw vertical line at the given location and color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – x coordinate</p></li>
+<li><p><strong>Y</strong> (<em>int</em>) – y coordinate</p></li>
+<li><p><strong>length</strong> (<em>int</em>) – length of line</p></li>
+<li><p><strong>color</strong> (<em>int</em>) – 565 encoded color</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.hline">
+<span class="sig-name descname"><span class="pre">hline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.hline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.hline" title="Permalink to this definition"></a></dt>
+<dd><p>Draw horizontal line at the given location and color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – x coordinate</p></li>
+<li><p><strong>Y</strong> (<em>int</em>) – y coordinate</p></li>
+<li><p><strong>length</strong> (<em>int</em>) – length of line</p></li>
+<li><p><strong>color</strong> (<em>int</em>) – 565 encoded color</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.pixel">
+<span class="sig-name descname"><span class="pre">pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.pixel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.pixel" title="Permalink to this definition"></a></dt>
+<dd><p>Draw a pixel at the given location and color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – x coordinate</p></li>
+<li><p><strong>Y</strong> (<em>int</em>) – y coordinate</p></li>
+<li><p><strong>color</strong> (<em>int</em>) – 565 encoded color</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.blit_buffer">
+<span class="sig-name descname"><span class="pre">blit_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.blit_buffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.blit_buffer" title="Permalink to this definition"></a></dt>
+<dd><p>Copy buffer to display at the given location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> (<em>bytes</em>) – Data to copy to display</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – Top left corner x coordinate</p></li>
+<li><p><strong>Y</strong> (<em>int</em>) – Top left corner y coordinate</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – Width</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.rect">
+<span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.rect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.rect" title="Permalink to this definition"></a></dt>
+<dd><p>Draw a rectangle at the given location, size and color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – Top left corner x coordinate</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Top left corner y coordinate</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – Width in pixels</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Height in pixels</p></li>
+<li><p><strong>color</strong> (<em>int</em>) – 565 encoded color</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.fill_rect">
+<span class="sig-name descname"><span class="pre">fill_rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.fill_rect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.fill_rect" title="Permalink to this definition"></a></dt>
+<dd><p>Draw a rectangle at the given location, size and filled with color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – Top left corner x coordinate</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Top left corner y coordinate</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – Width in pixels</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Height in pixels</p></li>
+<li><p><strong>color</strong> (<em>int</em>) – 565 encoded color</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.fill">
+<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.fill" title="Permalink to this definition"></a></dt>
+<dd><p>Fill the entire FrameBuffer with the specified color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>int</em>) – 565 encoded color</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">white</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Fast clear the screen to white if white is True, otherwise black.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>white</strong> (<em>bool</em>) – True to clear to white, False to clear to black</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.line">
+<span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.line" title="Permalink to this definition"></a></dt>
+<dd><p>Draw a single pixel wide line starting at x0, y0 and ending at x1, y1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>int</em>) – Start point x coordinate</p></li>
+<li><p><strong>y0</strong> (<em>int</em>) – Start point y coordinate</p></li>
+<li><p><strong>x1</strong> (<em>int</em>) – End point x coordinate</p></li>
+<li><p><strong>y1</strong> (<em>int</em>) – End point y coordinate</p></li>
+<li><p><strong>color</strong> (<em>int</em>) – 565 encoded color</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.vscrdef">
+<span class="sig-name descname"><span class="pre">vscrdef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tfa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vsa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bfa</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.vscrdef"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.vscrdef" title="Permalink to this definition"></a></dt>
+<dd><p>Set Vertical Scrolling Definition.</p>
+<p>To scroll a 135x240 display these values should be 40, 240, 40.
+There are 40 lines above the display that are not shown followed by
+240 lines that are shown followed by 40 more lines that are not shown.
+You could write to these areas off display and scroll them into view by
+changing the TFA, VSA and BFA values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tfa</strong> (<em>int</em>) – Top Fixed Area</p></li>
+<li><p><strong>vsa</strong> (<em>int</em>) – Vertical Scrolling Area</p></li>
+<li><p><strong>bfa</strong> (<em>int</em>) – Bottom Fixed Area</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.vscsad">
+<span class="sig-name descname"><span class="pre">vscsad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vssa</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.vscsad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.vscsad" title="Permalink to this definition"></a></dt>
+<dd><p>Set Vertical Scroll Start Address of RAM.</p>
+<p>Defines which line in the Frame Memory will be written as the first
+line after the last line of the Top Fixed Area on the display</p>
+<p class="rubric">Example</p>
+<dl class="simple">
+<dt>for line in range(40, 280, 1):</dt><dd><p>tft.vscsad(line)
+utime.sleep(0.01)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vssa</strong> (<em>int</em>) – Vertical Scrolling Start Address</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.text">
+<span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.text" title="Permalink to this definition"></a></dt>
+<dd><p>Draw text on display in specified font and colors. 8 and 16 bit wide
+fonts are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>font</strong> (<em>module</em>) – font module to use.</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – text to write</p></li>
+<li><p><strong>x0</strong> (<em>int</em>) – column to start drawing at</p></li>
+<li><p><strong>y0</strong> (<em>int</em>) – row to start drawing at</p></li>
+<li><p><strong>color</strong> (<em>int</em>) – 565 encoded color to use for characters</p></li>
+<li><p><strong>background</strong> (<em>int</em>) – 565 encoded color to use for background</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.bitmap">
+<span class="sig-name descname"><span class="pre">bitmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.bitmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.bitmap" title="Permalink to this definition"></a></dt>
+<dd><p>Draw a bitmap on display at the specified column and row</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bitmap</strong> (<em>bitmap_module</em>) – The module containing the bitmap to draw</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – column to start drawing at</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – row to start drawing at</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – Optional index of bitmap to draw from multiple bitmap
+module</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.write" title="Permalink to this definition"></a></dt>
+<dd><p>Write a string using a converted true-type font on the display starting
+at the specified column and row</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>font</strong> (<em>font</em>) – The module containing the converted true-type font</p></li>
+<li><p><strong>s</strong> (<em>string</em>) – The string to write</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – column to start writing</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – row to start writing</p></li>
+<li><p><strong>fg</strong> (<em>int</em>) – foreground color, optional, defaults to WHITE</p></li>
+<li><p><strong>bg</strong> (<em>int</em>) – background color, optional, defaults to BLACK</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wt32sc01py.WT32SC01.write_width">
+<span class="sig-name descname"><span class="pre">write_width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wt32sc01py.html#WT32SC01.write_width"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wt32sc01py.WT32SC01.write_width" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the width in pixels of the string if it was written with the
+specified font</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>font</strong> (<em>font</em>) – The module containing the converted true-type font</p></li>
+<li><p><strong>string</strong> (<em>string</em>) – The string to measure</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="WT32SC01 Plus Driver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Example Programs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
