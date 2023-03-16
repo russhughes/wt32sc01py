@@ -73,14 +73,15 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Example Programs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#lines-py">lines.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hello-py">hello.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chango-py">chango.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#feathers-py">feathers.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fonts-py">fonts.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hello-py">hello.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lines-py">lines.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#noto-fonts-py">noto_fonts.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#proverbs-py">proverbs.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scroll-py">scroll.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#toasters-py">toasters.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#chango-py">chango.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#noto-fonts-py">noto_fonts.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="fonts.html">Fonts</a><ul>
@@ -122,115 +123,45 @@
 <h1>Example Programs<a class="headerlink" href="#example-programs" title="Permalink to this heading"></a></h1>
 <p>The examples directory contains programs that demonstrate the use of the driver.
 These examples run on a WT32-SC01 Plus ESP32 board with a 480x320 display.</p>
-<section id="lines-py">
-<h2>lines.py<a class="headerlink" href="#lines-py" title="Permalink to this heading"></a></h2>
+<section id="chango-py">
+<h2>chango.py<a class="headerlink" href="#chango-py" title="Permalink to this heading"></a></h2>
+<p>Test for font2bitmap converter for the driver.
+See the font2bitmap program in the utils directory.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos"> 2</span><span class="sd">lines.py</span>
+<span class="linenos"> 2</span><span class="sd">chango.py</span>
 <span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="sd">    Draws lines and rectangles in random colors at random locations on the</span>
-<span class="linenos"> 5</span><span class="sd">    display.</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span>
-<span class="linenos">10</span><span class="kn">import</span> <span class="nn">random</span>
-<span class="linenos">11</span><span class="kn">import</span> <span class="nn">wt32sc01py</span> <span class="k">as</span> <span class="nn">wt32</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span>
-<span class="linenos">14</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-<span class="linenos">15</span>    <span class="n">tft</span> <span class="o">=</span> <span class="n">wt32</span><span class="o">.</span><span class="n">WT32SC01</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos">16</span>    <span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-<span class="linenos">17</span>
-<span class="linenos">18</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="linenos">19</span>        <span class="n">tft</span><span class="o">.</span><span class="n">line</span><span class="p">(</span>
-<span class="linenos">20</span>            <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span><span class="p">),</span>
-<span class="linenos">21</span>            <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span><span class="p">),</span>
-<span class="linenos">22</span>            <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span><span class="p">),</span>
-<span class="linenos">23</span>            <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span><span class="p">),</span>
-<span class="linenos">24</span>            <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span>
-<span class="linenos">25</span>                <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="linenos">26</span>            <span class="p">),</span>
-<span class="linenos">27</span>        <span class="p">)</span>
-<span class="linenos">28</span>
-<span class="linenos">29</span>        <span class="n">width</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
-<span class="linenos">30</span>        <span class="n">height</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
-<span class="linenos">31</span>        <span class="n">col</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">width</span><span class="p">)</span>
-<span class="linenos">32</span>        <span class="n">row</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">height</span><span class="p">)</span>
-<span class="linenos">33</span>        <span class="n">tft</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span>
-<span class="linenos">34</span>            <span class="n">col</span><span class="p">,</span>
-<span class="linenos">35</span>            <span class="n">row</span><span class="p">,</span>
-<span class="linenos">36</span>            <span class="n">width</span><span class="p">,</span>
-<span class="linenos">37</span>            <span class="n">height</span><span class="p">,</span>
-<span class="linenos">38</span>            <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span>
-<span class="linenos">39</span>                <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="linenos">40</span>            <span class="p">),</span>
-<span class="linenos">41</span>        <span class="p">)</span>
-<span class="linenos">42</span>
-<span class="linenos">43</span>
-<span class="linenos">44</span><span class="n">freq</span><span class="p">(</span><span class="mi">240_000_000</span><span class="p">)</span>
-<span class="linenos">45</span><span class="n">main</span><span class="p">()</span>
-</pre></div>
-</div>
-</section>
-<section id="hello-py">
-<h2>hello.py<a class="headerlink" href="#hello-py" title="Permalink to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos"> 2</span><span class="sd">hello.py</span>
-<span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="sd">    Writes &quot;Hello!&quot; in random colors at random locations on the display.</span>
-<span class="linenos"> 5</span>
+<span class="linenos"> 4</span><span class="sd">    Test for font2bitmap converter for the driver.</span>
+<span class="linenos"> 5</span><span class="sd">    See the font2bitmap program in the utils directory.</span>
 <span class="linenos"> 6</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos"> 7</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span>
-<span class="linenos"> 8</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span>
 <span class="linenos"> 9</span><span class="kn">import</span> <span class="nn">wt32sc01py</span> <span class="k">as</span> <span class="nn">wt32</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span><span class="c1"># Choose a font</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span><span class="c1"># import vga1_8x8 as font</span>
-<span class="linenos">14</span><span class="c1"># import vga2_8x8 as font</span>
-<span class="linenos">15</span><span class="c1"># import vga1_8x16 as font</span>
-<span class="linenos">16</span><span class="c1"># import vga2_8x16 as font</span>
-<span class="linenos">17</span><span class="c1"># import vga1_16x16 as font</span>
-<span class="linenos">18</span><span class="c1"># import vga1_bold_16x16 as font</span>
-<span class="linenos">19</span><span class="c1"># import vga2_16x16 as font</span>
-<span class="linenos">20</span><span class="c1"># import vga2_bold_16x16 as font</span>
-<span class="linenos">21</span><span class="c1"># import vga1_16x32 as font</span>
-<span class="linenos">22</span><span class="c1"># import vga1_bold_16x32 as font</span>
-<span class="linenos">23</span><span class="c1"># import vga2_16x32 as font</span>
-<span class="linenos">24</span><span class="kn">import</span> <span class="nn">vga2_bold_16x32</span> <span class="k">as</span> <span class="nn">font</span>
-<span class="linenos">25</span>
+<span class="linenos">10</span><span class="kn">import</span> <span class="nn">gc</span>
+<span class="linenos">11</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">chango_16</span> <span class="k">as</span> <span class="n">font_16</span>
+<span class="linenos">12</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">chango_32</span> <span class="k">as</span> <span class="n">font_32</span>
+<span class="linenos">13</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">chango_64</span> <span class="k">as</span> <span class="n">font_64</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">19</span>    <span class="c1"># enable display and clear screen</span>
+<span class="linenos">20</span>    <span class="n">tft</span> <span class="o">=</span> <span class="n">wt32</span><span class="o">.</span><span class="n">WT32SC01</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">21</span>    <span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span>    <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">24</span>    <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font_16</span><span class="p">,</span> <span class="s2">&quot;abcdefghijklmnopqrst&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+<span class="linenos">25</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">font_16</span><span class="o">.</span><span class="n">HEIGHT</span>
 <span class="linenos">26</span>
-<span class="linenos">27</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-<span class="linenos">28</span>    <span class="n">tft</span> <span class="o">=</span> <span class="n">wt32</span><span class="o">.</span><span class="n">WT32SC01</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos">29</span>    <span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-<span class="linenos">30</span>
-<span class="linenos">31</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="linenos">32</span>        <span class="k">for</span> <span class="n">rotation</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-<span class="linenos">33</span>            <span class="n">tft</span><span class="o">.</span><span class="n">rotation</span><span class="p">(</span><span class="n">rotation</span><span class="p">)</span>
-<span class="linenos">34</span>            <span class="n">col_max</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">font</span><span class="o">.</span><span class="n">WIDTH</span> <span class="o">*</span> <span class="mi">6</span>
-<span class="linenos">35</span>            <span class="n">row_max</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span>
-<span class="linenos">36</span>
-<span class="linenos">37</span>            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-<span class="linenos">38</span>                <span class="n">tft</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
-<span class="linenos">39</span>                    <span class="n">font</span><span class="p">,</span>
-<span class="linenos">40</span>                    <span class="s2">&quot;Hello!&quot;</span><span class="p">,</span>
-<span class="linenos">41</span>                    <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">col_max</span><span class="p">),</span>
-<span class="linenos">42</span>                    <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">row_max</span><span class="p">),</span>
-<span class="linenos">43</span>                    <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span>
-<span class="linenos">44</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
-<span class="linenos">45</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
-<span class="linenos">46</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
-<span class="linenos">47</span>                    <span class="p">),</span>
-<span class="linenos">48</span>                    <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span>
-<span class="linenos">49</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
-<span class="linenos">50</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
-<span class="linenos">51</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
-<span class="linenos">52</span>                    <span class="p">),</span>
-<span class="linenos">53</span>                <span class="p">)</span>
-<span class="linenos">54</span>
-<span class="linenos">55</span>
-<span class="linenos">56</span><span class="n">freq</span><span class="p">(</span><span class="mi">240_000_000</span><span class="p">)</span>
-<span class="linenos">57</span><span class="n">main</span><span class="p">()</span>
+<span class="linenos">27</span>    <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font_32</span><span class="p">,</span> <span class="s2">&quot;abcdefghij&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)</span>
+<span class="linenos">28</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">font_32</span><span class="o">.</span><span class="n">HEIGHT</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>    <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font_64</span><span class="p">,</span> <span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">BLUE</span><span class="p">)</span>
+<span class="linenos">31</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">font_64</span><span class="o">.</span><span class="n">HEIGHT</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="n">freq</span><span class="p">(</span><span class="mi">240_000_000</span><span class="p">)</span>
+<span class="linenos">35</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -246,7 +177,7 @@ These examples run on a WT32-SC01 Plus ESP32 board with a 480x320 display.</p>
 <span class="linenos">  8</span><span class="kn">import</span> <span class="nn">random</span>
 <span class="linenos">  9</span><span class="kn">import</span> <span class="nn">math</span>
 <span class="linenos"> 10</span><span class="kn">import</span> <span class="nn">utime</span>
-<span class="linenos"> 11</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="linenos"> 11</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span>
 <span class="linenos"> 12</span><span class="kn">import</span> <span class="nn">wt32sc01py</span> <span class="k">as</span> <span class="nn">wt32</span>
 <span class="linenos"> 13</span>
 <span class="linenos"> 14</span>
@@ -404,6 +335,251 @@ These examples run on a WT32-SC01 Plus ESP32 board with a 480x320 display.</p>
 </pre></div>
 </div>
 </section>
+<section id="hello-py">
+<h2>hello.py<a class="headerlink" href="#hello-py" title="Permalink to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="sd">hello.py</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="sd">    Writes &quot;Hello!&quot; in random colors at random locations on the display.</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 7</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span>
+<span class="linenos"> 8</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 9</span><span class="kn">import</span> <span class="nn">wt32sc01py</span> <span class="k">as</span> <span class="nn">wt32</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1"># Choose a font</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1"># import vga1_8x8 as font</span>
+<span class="linenos">14</span><span class="c1"># import vga2_8x8 as font</span>
+<span class="linenos">15</span><span class="c1"># import vga1_8x16 as font</span>
+<span class="linenos">16</span><span class="c1"># import vga2_8x16 as font</span>
+<span class="linenos">17</span><span class="c1"># import vga1_16x16 as font</span>
+<span class="linenos">18</span><span class="c1"># import vga1_bold_16x16 as font</span>
+<span class="linenos">19</span><span class="c1"># import vga2_16x16 as font</span>
+<span class="linenos">20</span><span class="c1"># import vga2_bold_16x16 as font</span>
+<span class="linenos">21</span><span class="c1"># import vga1_16x32 as font</span>
+<span class="linenos">22</span><span class="c1"># import vga1_bold_16x32 as font</span>
+<span class="linenos">23</span><span class="c1"># import vga2_16x32 as font</span>
+<span class="linenos">24</span><span class="kn">import</span> <span class="nn">vga2_bold_16x32</span> <span class="k">as</span> <span class="nn">font</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">28</span>    <span class="n">tft</span> <span class="o">=</span> <span class="n">wt32</span><span class="o">.</span><span class="n">WT32SC01</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">29</span>    <span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">32</span>        <span class="k">for</span> <span class="n">rotation</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<span class="linenos">33</span>            <span class="n">tft</span><span class="o">.</span><span class="n">rotation</span><span class="p">(</span><span class="n">rotation</span><span class="p">)</span>
+<span class="linenos">34</span>            <span class="n">col_max</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">font</span><span class="o">.</span><span class="n">WIDTH</span> <span class="o">*</span> <span class="mi">6</span>
+<span class="linenos">35</span>            <span class="n">row_max</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span>            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="linenos">38</span>                <span class="n">tft</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+<span class="linenos">39</span>                    <span class="n">font</span><span class="p">,</span>
+<span class="linenos">40</span>                    <span class="s2">&quot;Hello!&quot;</span><span class="p">,</span>
+<span class="linenos">41</span>                    <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">col_max</span><span class="p">),</span>
+<span class="linenos">42</span>                    <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">row_max</span><span class="p">),</span>
+<span class="linenos">43</span>                    <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span>
+<span class="linenos">44</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+<span class="linenos">45</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+<span class="linenos">46</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+<span class="linenos">47</span>                    <span class="p">),</span>
+<span class="linenos">48</span>                    <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span>
+<span class="linenos">49</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+<span class="linenos">50</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+<span class="linenos">51</span>                        <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+<span class="linenos">52</span>                    <span class="p">),</span>
+<span class="linenos">53</span>                <span class="p">)</span>
+<span class="linenos">54</span>
+<span class="linenos">55</span>
+<span class="linenos">56</span><span class="n">freq</span><span class="p">(</span><span class="mi">240_000_000</span><span class="p">)</span>
+<span class="linenos">57</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="lines-py">
+<h2>lines.py<a class="headerlink" href="#lines-py" title="Permalink to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="sd">lines.py</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="sd">    Draws lines and rectangles in random colors at random locations on the</span>
+<span class="linenos"> 5</span><span class="sd">    display.</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span>
+<span class="linenos">10</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos">11</span><span class="kn">import</span> <span class="nn">wt32sc01py</span> <span class="k">as</span> <span class="nn">wt32</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">15</span>    <span class="n">tft</span> <span class="o">=</span> <span class="n">wt32</span><span class="o">.</span><span class="n">WT32SC01</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">16</span>    <span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">19</span>        <span class="n">tft</span><span class="o">.</span><span class="n">line</span><span class="p">(</span>
+<span class="linenos">20</span>            <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span><span class="p">),</span>
+<span class="linenos">21</span>            <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span><span class="p">),</span>
+<span class="linenos">22</span>            <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span><span class="p">),</span>
+<span class="linenos">23</span>            <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span><span class="p">),</span>
+<span class="linenos">24</span>            <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span>
+<span class="linenos">25</span>                <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="linenos">26</span>            <span class="p">),</span>
+<span class="linenos">27</span>        <span class="p">)</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span>        <span class="n">width</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+<span class="linenos">30</span>        <span class="n">height</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+<span class="linenos">31</span>        <span class="n">col</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">width</span><span class="p">)</span>
+<span class="linenos">32</span>        <span class="n">row</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">height</span><span class="p">)</span>
+<span class="linenos">33</span>        <span class="n">tft</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span>
+<span class="linenos">34</span>            <span class="n">col</span><span class="p">,</span>
+<span class="linenos">35</span>            <span class="n">row</span><span class="p">,</span>
+<span class="linenos">36</span>            <span class="n">width</span><span class="p">,</span>
+<span class="linenos">37</span>            <span class="n">height</span><span class="p">,</span>
+<span class="linenos">38</span>            <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span>
+<span class="linenos">39</span>                <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="linenos">40</span>            <span class="p">),</span>
+<span class="linenos">41</span>        <span class="p">)</span>
+<span class="linenos">42</span>
+<span class="linenos">43</span>
+<span class="linenos">44</span><span class="n">freq</span><span class="p">(</span><span class="mi">240_000_000</span><span class="p">)</span>
+<span class="linenos">45</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="noto-fonts-py">
+<h2>noto_fonts.py<a class="headerlink" href="#noto-fonts-py" title="Permalink to this heading"></a></h2>
+<p>Test for font2bitmap converter for the driver.
+See the font2bitmap program in the utils directory.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="sd">noto_fonts Writes the names of three Noto fonts centered on the display</span>
+<span class="linenos"> 3</span><span class="sd">    using the font. The fonts were converted from True Type fonts using</span>
+<span class="linenos"> 4</span><span class="sd">    the font2bitmap utility.</span>
+<span class="linenos"> 5</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span>
+<span class="linenos"> 8</span><span class="kn">import</span> <span class="nn">wt32sc01py</span> <span class="k">as</span> <span class="nn">wt32</span>
+<span class="linenos"> 9</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">NotoSans_32</span> <span class="k">as</span> <span class="n">noto_sans</span>
+<span class="linenos">10</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">NotoSerif_32</span> <span class="k">as</span> <span class="n">noto_serif</span>
+<span class="linenos">11</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">NotoSansMono_32</span> <span class="k">as</span> <span class="n">noto_mono</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">15</span>    <span class="k">def</span> <span class="nf">center</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">wt32</span><span class="o">.</span><span class="n">WHITE</span><span class="p">):</span>
+<span class="linenos">16</span>        <span class="n">screen</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span>  <span class="c1"># get screen width</span>
+<span class="linenos">17</span>        <span class="n">width</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">write_width</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>  <span class="c1"># get the width of the string</span>
+<span class="linenos">18</span>        <span class="n">col</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">width</span> <span class="ow">and</span> <span class="n">width</span> <span class="o">&lt;</span> <span class="n">screen</span> <span class="k">else</span> <span class="mi">0</span>
+<span class="linenos">19</span>        <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>  <span class="c1"># and write the string</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span>    <span class="c1"># enable display and clear screen</span>
+<span class="linenos">22</span>    <span class="n">tft</span> <span class="o">=</span> <span class="n">wt32</span><span class="o">.</span><span class="n">WT32SC01</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">23</span>    <span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span>    <span class="n">row</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>    <span class="c1"># center the name of the first font, using the font</span>
+<span class="linenos">28</span>    <span class="n">center</span><span class="p">(</span><span class="n">noto_sans</span><span class="p">,</span> <span class="s2">&quot;NotoSans&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+<span class="linenos">29</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">noto_sans</span><span class="o">.</span><span class="n">HEIGHT</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span>    <span class="c1"># center the name of the second font, using the font</span>
+<span class="linenos">32</span>    <span class="n">center</span><span class="p">(</span><span class="n">noto_serif</span><span class="p">,</span> <span class="s2">&quot;NotoSerif&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)</span>
+<span class="linenos">33</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">noto_serif</span><span class="o">.</span><span class="n">HEIGHT</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span>    <span class="c1"># center the name of the third font, using the font</span>
+<span class="linenos">36</span>    <span class="n">center</span><span class="p">(</span><span class="n">noto_mono</span><span class="p">,</span> <span class="s2">&quot;NotoSansMono&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">BLUE</span><span class="p">)</span>
+<span class="linenos">37</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">noto_mono</span><span class="o">.</span><span class="n">HEIGHT</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="n">freq</span><span class="p">(</span><span class="mi">240_000_000</span><span class="p">)</span>
+<span class="linenos">41</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="proverbs-py">
+<h2>proverbs.py<a class="headerlink" href="#proverbs-py" title="Permalink to this heading"></a></h2>
+<p>Displays what I hope are chinese proverbs in simplified chinese to test UTF-8
+font support.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="sd">proverbs.py - Displays what I hope are chinese proverbs in simplified chinese to test UTF-8</span>
+<span class="linenos"> 3</span><span class="sd">    font support.</span>
+<span class="linenos"> 4</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="kn">import</span> <span class="nn">utime</span>
+<span class="linenos"> 7</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span>
+<span class="linenos"> 8</span><span class="kn">import</span> <span class="nn">wt32sc01py</span> <span class="k">as</span> <span class="nn">wt32</span>
+<span class="linenos"> 9</span><span class="kn">import</span> <span class="nn">proverbs_font</span> <span class="k">as</span> <span class="nn">font</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="n">tft</span> <span class="o">=</span> <span class="n">wt32</span><span class="o">.</span><span class="n">WT32SC01</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="k">def</span> <span class="nf">color_wheel</span><span class="p">(</span><span class="n">WheelPos</span><span class="p">):</span>
+<span class="linenos">17</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;returns a 565 color from the given position of the color wheel&quot;&quot;&quot;</span>
+<span class="linenos">18</span>    <span class="n">WheelPos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">WheelPos</span><span class="p">)</span> <span class="o">%</span> <span class="mi">255</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>    <span class="k">if</span> <span class="n">WheelPos</span> <span class="o">&lt;</span> <span class="mi">85</span><span class="p">:</span>
+<span class="linenos">21</span>        <span class="k">return</span> <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">WheelPos</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">WheelPos</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span>    <span class="k">if</span> <span class="n">WheelPos</span> <span class="o">&lt;</span> <span class="mi">170</span><span class="p">:</span>
+<span class="linenos">24</span>        <span class="n">WheelPos</span> <span class="o">-=</span> <span class="mi">85</span>
+<span class="linenos">25</span>        <span class="k">return</span> <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">WheelPos</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">255</span> <span class="o">-</span> <span class="n">WheelPos</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>    <span class="n">WheelPos</span> <span class="o">-=</span> <span class="mi">170</span>
+<span class="linenos">28</span>    <span class="k">return</span> <span class="n">wt32</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span><span class="n">WheelPos</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">255</span> <span class="o">-</span> <span class="n">WheelPos</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span>    <span class="n">proverbs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">34</span>        <span class="s2">&quot;万事起头难&quot;</span><span class="p">,</span>
+<span class="linenos">35</span>        <span class="s2">&quot;熟能生巧&quot;</span><span class="p">,</span>
+<span class="linenos">36</span>        <span class="s2">&quot;冰冻三尺，非一日之寒&quot;</span><span class="p">,</span>
+<span class="linenos">37</span>        <span class="s2">&quot;三个臭皮匠，胜过诸葛亮&quot;</span><span class="p">,</span>
+<span class="linenos">38</span>        <span class="s2">&quot;今日事，今日毕&quot;</span><span class="p">,</span>
+<span class="linenos">39</span>        <span class="s2">&quot;师父领进门，修行在个人&quot;</span><span class="p">,</span>
+<span class="linenos">40</span>        <span class="s2">&quot;一口吃不成胖子&quot;</span><span class="p">,</span>
+<span class="linenos">41</span>        <span class="s2">&quot;欲速则不达&quot;</span><span class="p">,</span>
+<span class="linenos">42</span>        <span class="s2">&quot;百闻不如一见&quot;</span><span class="p">,</span>
+<span class="linenos">43</span>        <span class="s2">&quot;不入虎穴，焉得虎子&quot;</span><span class="p">,</span>
+<span class="linenos">44</span>    <span class="p">]</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span>    <span class="c1"># initialize display</span>
+<span class="linenos">47</span>    <span class="n">line_height</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">+</span> <span class="mi">8</span>
+<span class="linenos">48</span>    <span class="n">half_height</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="linenos">49</span>    <span class="n">half_width</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="linenos">50</span>    <span class="n">wheel</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">51</span>
+<span class="linenos">52</span>    <span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="linenos">53</span>
+<span class="linenos">54</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">55</span>        <span class="k">for</span> <span class="n">proverb</span> <span class="ow">in</span> <span class="n">proverbs</span><span class="p">:</span>
+<span class="linenos">56</span>            <span class="n">proverb_lines</span> <span class="o">=</span> <span class="n">proverb</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;，&quot;</span><span class="p">)</span>
+<span class="linenos">57</span>            <span class="n">half_lines_height</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">proverb_lines</span><span class="p">)</span> <span class="o">*</span> <span class="n">line_height</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="linenos">58</span>
+<span class="linenos">59</span>            <span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="linenos">60</span>
+<span class="linenos">61</span>            <span class="k">for</span> <span class="n">count</span><span class="p">,</span> <span class="n">proverb_line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">proverb_lines</span><span class="p">):</span>
+<span class="linenos">62</span>                <span class="n">half_length</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">write_width</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">proverb_line</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="linenos">63</span>
+<span class="linenos">64</span>                <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+<span class="linenos">65</span>                    <span class="n">font</span><span class="p">,</span>
+<span class="linenos">66</span>                    <span class="n">proverb_line</span><span class="p">,</span>
+<span class="linenos">67</span>                    <span class="n">half_width</span> <span class="o">-</span> <span class="n">half_length</span><span class="p">,</span>
+<span class="linenos">68</span>                    <span class="n">half_height</span> <span class="o">-</span> <span class="n">half_lines_height</span> <span class="o">+</span> <span class="n">count</span> <span class="o">*</span> <span class="n">line_height</span><span class="p">,</span>
+<span class="linenos">69</span>                    <span class="n">color_wheel</span><span class="p">(</span><span class="n">wheel</span><span class="p">),</span>
+<span class="linenos">70</span>                <span class="p">)</span>
+<span class="linenos">71</span>
+<span class="linenos">72</span>            <span class="n">wheel</span> <span class="o">=</span> <span class="p">(</span><span class="n">wheel</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">%</span> <span class="mi">256</span>
+<span class="linenos">73</span>
+<span class="linenos">74</span>            <span class="c1"># pause to slow down scrolling</span>
+<span class="linenos">75</span>            <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos">76</span>
+<span class="linenos">77</span>
+<span class="linenos">78</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
 <section id="scroll-py">
 <h2>scroll.py<a class="headerlink" href="#scroll-py" title="Permalink to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
@@ -482,7 +658,7 @@ toasters.bmp image.</p>
 <span class="linenos"> 9</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="linenos">10</span>
 <span class="linenos">11</span><span class="kn">import</span> <span class="nn">random</span>
-<span class="linenos">12</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SoftSPI</span>
+<span class="linenos">12</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span>
 <span class="linenos">13</span><span class="kn">import</span> <span class="nn">wt32sc01py</span> <span class="k">as</span> <span class="nn">wt32</span>
 <span class="linenos">14</span><span class="kn">import</span> <span class="nn">t1</span><span class="o">,</span> <span class="nn">t2</span><span class="o">,</span> <span class="nn">t3</span><span class="o">,</span> <span class="nn">t4</span><span class="o">,</span> <span class="nn">t5</span>
 <span class="linenos">15</span>
@@ -550,96 +726,6 @@ toasters.bmp image.</p>
 <span class="linenos">77</span>
 <span class="linenos">78</span><span class="n">freq</span><span class="p">(</span><span class="mi">240_000_000</span><span class="p">)</span>
 <span class="linenos">79</span><span class="n">main</span><span class="p">()</span>
-</pre></div>
-</div>
-</section>
-<section id="chango-py">
-<h2>chango.py<a class="headerlink" href="#chango-py" title="Permalink to this heading"></a></h2>
-<p>Test for font2bitmap converter for the driver.
-See the font2bitmap program in the utils directory.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos"> 2</span><span class="sd">chango.py</span>
-<span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="sd">    Test for font2bitmap converter for the driver.</span>
-<span class="linenos"> 5</span><span class="sd">    See the font2bitmap program in the utils directory.</span>
-<span class="linenos"> 6</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SoftSPI</span>
-<span class="linenos"> 9</span><span class="kn">import</span> <span class="nn">wt32sc01py</span> <span class="k">as</span> <span class="nn">wt32</span>
-<span class="linenos">10</span><span class="kn">import</span> <span class="nn">gc</span>
-<span class="linenos">11</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">chango_16</span> <span class="k">as</span> <span class="n">font_16</span>
-<span class="linenos">12</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">chango_32</span> <span class="k">as</span> <span class="n">font_32</span>
-<span class="linenos">13</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">chango_64</span> <span class="k">as</span> <span class="n">font_64</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span><span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-<span class="linenos">16</span>
-<span class="linenos">17</span>
-<span class="linenos">18</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-<span class="linenos">19</span>    <span class="c1"># enable display and clear screen</span>
-<span class="linenos">20</span>    <span class="n">tft</span> <span class="o">=</span> <span class="n">wt32</span><span class="o">.</span><span class="n">WT32SC01</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos">21</span>    <span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-<span class="linenos">22</span>
-<span class="linenos">23</span>    <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="linenos">24</span>    <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font_16</span><span class="p">,</span> <span class="s2">&quot;abcdefghijklmnopqrst&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
-<span class="linenos">25</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">font_16</span><span class="o">.</span><span class="n">HEIGHT</span>
-<span class="linenos">26</span>
-<span class="linenos">27</span>    <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font_32</span><span class="p">,</span> <span class="s2">&quot;abcdefghij&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)</span>
-<span class="linenos">28</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">font_32</span><span class="o">.</span><span class="n">HEIGHT</span>
-<span class="linenos">29</span>
-<span class="linenos">30</span>    <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font_64</span><span class="p">,</span> <span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">BLUE</span><span class="p">)</span>
-<span class="linenos">31</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">font_64</span><span class="o">.</span><span class="n">HEIGHT</span>
-<span class="linenos">32</span>
-<span class="linenos">33</span>
-<span class="linenos">34</span><span class="n">freq</span><span class="p">(</span><span class="mi">240_000_000</span><span class="p">)</span>
-<span class="linenos">35</span><span class="n">main</span><span class="p">()</span>
-</pre></div>
-</div>
-</section>
-<section id="noto-fonts-py">
-<h2>noto_fonts.py<a class="headerlink" href="#noto-fonts-py" title="Permalink to this heading"></a></h2>
-<p>Test for font2bitmap converter for the driver.
-See the font2bitmap program in the utils directory.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos"> 2</span><span class="sd">noto_fonts Writes the names of three Noto fonts centered on the display</span>
-<span class="linenos"> 3</span><span class="sd">    using the font. The fonts were converted from True Type fonts using</span>
-<span class="linenos"> 4</span><span class="sd">    the font2bitmap utility.</span>
-<span class="linenos"> 5</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">freq</span><span class="p">,</span> <span class="n">SoftSPI</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="linenos"> 8</span><span class="kn">import</span> <span class="nn">wt32sc01py</span> <span class="k">as</span> <span class="nn">wt32</span>
-<span class="linenos"> 9</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">NotoSans_32</span> <span class="k">as</span> <span class="n">noto_sans</span>
-<span class="linenos">10</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">NotoSerif_32</span> <span class="k">as</span> <span class="n">noto_serif</span>
-<span class="linenos">11</span><span class="kn">from</span> <span class="nn">truetype</span> <span class="kn">import</span> <span class="n">NotoSansMono_32</span> <span class="k">as</span> <span class="n">noto_mono</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span>
-<span class="linenos">14</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-<span class="linenos">15</span>    <span class="k">def</span> <span class="nf">center</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">wt32</span><span class="o">.</span><span class="n">WHITE</span><span class="p">):</span>
-<span class="linenos">16</span>        <span class="n">screen</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span>  <span class="c1"># get screen width</span>
-<span class="linenos">17</span>        <span class="n">width</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">write_width</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>  <span class="c1"># get the width of the string</span>
-<span class="linenos">18</span>        <span class="n">col</span> <span class="o">=</span> <span class="n">tft</span><span class="o">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">width</span> <span class="ow">and</span> <span class="n">width</span> <span class="o">&lt;</span> <span class="n">screen</span> <span class="k">else</span> <span class="mi">0</span>
-<span class="linenos">19</span>        <span class="n">tft</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>  <span class="c1"># and write the string</span>
-<span class="linenos">20</span>
-<span class="linenos">21</span>    <span class="c1"># enable display and clear screen</span>
-<span class="linenos">22</span>    <span class="n">tft</span> <span class="o">=</span> <span class="n">wt32</span><span class="o">.</span><span class="n">WT32SC01</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos">23</span>    <span class="n">tft</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-<span class="linenos">24</span>
-<span class="linenos">25</span>    <span class="n">row</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="linenos">26</span>
-<span class="linenos">27</span>    <span class="c1"># center the name of the first font, using the font</span>
-<span class="linenos">28</span>    <span class="n">center</span><span class="p">(</span><span class="n">noto_sans</span><span class="p">,</span> <span class="s2">&quot;NotoSans&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
-<span class="linenos">29</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">noto_sans</span><span class="o">.</span><span class="n">HEIGHT</span>
-<span class="linenos">30</span>
-<span class="linenos">31</span>    <span class="c1"># center the name of the second font, using the font</span>
-<span class="linenos">32</span>    <span class="n">center</span><span class="p">(</span><span class="n">noto_serif</span><span class="p">,</span> <span class="s2">&quot;NotoSerif&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)</span>
-<span class="linenos">33</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">noto_serif</span><span class="o">.</span><span class="n">HEIGHT</span>
-<span class="linenos">34</span>
-<span class="linenos">35</span>    <span class="c1"># center the name of the third font, using the font</span>
-<span class="linenos">36</span>    <span class="n">center</span><span class="p">(</span><span class="n">noto_mono</span><span class="p">,</span> <span class="s2">&quot;NotoSansMono&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">wt32</span><span class="o">.</span><span class="n">BLUE</span><span class="p">)</span>
-<span class="linenos">37</span>    <span class="n">row</span> <span class="o">+=</span> <span class="n">noto_mono</span><span class="o">.</span><span class="n">HEIGHT</span>
-<span class="linenos">38</span>
-<span class="linenos">39</span>
-<span class="linenos">40</span><span class="n">freq</span><span class="p">(</span><span class="mi">240_000_000</span><span class="p">)</span>
-<span class="linenos">41</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>

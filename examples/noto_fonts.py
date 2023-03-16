@@ -4,7 +4,7 @@ noto_fonts Writes the names of three Noto fonts centered on the display
     the font2bitmap utility.
 """
 
-from machine import freq, SoftSPI, Pin
+from machine import freq
 import wt32sc01py as wt32
 from truetype import NotoSans_32 as noto_sans
 from truetype import NotoSerif_32 as noto_serif

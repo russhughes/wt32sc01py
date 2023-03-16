@@ -8,7 +8,7 @@ feathers.py
 import random
 import math
 import utime
-from machine import freq, Pin
+from machine import freq
 import wt32sc01py as wt32
 
 

@@ -9,7 +9,7 @@ toasters.py
 """
 
 import random
-from machine import freq, Pin, SoftSPI
+from machine import freq
 import wt32sc01py as wt32
 import t1, t2, t3, t4, t5
 

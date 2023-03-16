@@ -5,7 +5,7 @@ chango.py
     See the font2bitmap program in the utils directory.
 """
 
-from machine import freq, Pin, SoftSPI
+from machine import freq
 import wt32sc01py as wt32
 import gc
 from truetype import chango_16 as font_16
