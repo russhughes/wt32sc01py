@@ -26,15 +26,16 @@ import vga2_bold_16x32 as font
 
 def main():
     tft = wt32.WT32SC01(0)
-    tft.clear()
 
     while True:
         for rotation in range(4):
             tft.rotation(rotation)
+            tft.clear(random.getrandbits(8))
+
             col_max = tft.width - font.WIDTH * 6
             row_max = tft.height - font.HEIGHT
 
-            for _ in range(100):
+            for _ in range(50):
                 tft.text(
                     font,
                     "Hello!",
