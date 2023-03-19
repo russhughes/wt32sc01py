@@ -195,10 +195,8 @@ GPIO_OUT1_W1TS_MASKS = (
 # fmt: on
 
 
-
 # GPIO Pin Masks for setting and clearing pins
 PIN_WR = const(47)
-MASK_WR = const(1 << 15)  # OUT1
 MASK_RESET = const(1 << 4)  # OUT
 MASK_DC = const(1)  # OUT
 MASK_CS = const(1 << 6)  # OUT
@@ -336,7 +334,10 @@ class WT32SC01:
         Pin(46, Pin.OUT)  # d1
         Pin(9, Pin.OUT)  # d0
 
-        self.wr = Pin(PIN_WR, Pin.OUT)  # wr
+        self.wr = Pin(PIN_WR, Pin.OUT, value=1)  # wr
+        self.rmt = RMT(0, pin=self.wr, clock_div=1)
+        self.pulse = [0, 1]
+
         self.rst = Pin(4, Pin.OUT)  # reset
         self.dc = Pin(0, Pin.OUT)  # dc
         self.cs = Pin(6, Pin.OUT)  # cs
@@ -348,7 +349,6 @@ class WT32SC01:
 
         mem32[GPIO_OUT_W1TS_REG] = MASK_CS
         mem32[GPIO_OUT_W1TS_REG] = MASK_DC
-        mem32[GPIO_OUT1_W1TS_REG] = MASK_WR
 
         self.hard_reset()
         self.sleep_mode(False)
@@ -387,8 +387,7 @@ class WT32SC01:
             mem32[GPIO_OUT1_W1TC_REG] = out1 ^ GPIO_OUT1_W1TC_MASK
             self.last = b
 
-        mem32[GPIO_OUT1_W1TC_REG] = MASK_WR
-        mem32[GPIO_OUT1_W1TS_REG] = MASK_WR
+        self.rmt.write_pulses(2, self.pulse)
 
     @micropython.native
     def _write(self, command=None, data=None):
@@ -630,17 +629,13 @@ class WT32SC01:
         mem32[GPIO_OUT_W1TC_REG] = MASK_CS
         mem32[GPIO_OUT_W1TS_REG] = MASK_DC
 
-        rmt = RMT(0, pin=self.wr, clock_div=1)
         pulses = [0, 1] * self.width
         count = self.height + 1
 
-        for _ in range(count*2):
+        for _ in range(count * 2):
             rmt.write_pulses(2, pulses)
             rmt.wait_done()
 
-        rmt.deinit()
-
-        self.wr = Pin(PIN_WR, Pin.OUT, value=1)
         mem32[GPIO_OUT_W1TS_REG] = MASK_CS
 
     @micropython.native
