@@ -335,7 +335,7 @@ class WT32SC01:
         Pin(9, Pin.OUT)  # d0
 
         self.wr = Pin(PIN_WR, Pin.OUT, value=1)  # wr
-        self.rmt = RMT(0, pin=self.wr, clock_div=1)
+        self.rmt = RMT(1, pin=self.wr, clock_div=5)
         self.pulse = [0, 1]
 
         self.rst = Pin(4, Pin.OUT)  # reset
@@ -633,8 +633,8 @@ class WT32SC01:
         count = self.height + 1
 
         for _ in range(count * 2):
-            rmt.write_pulses(2, pulses)
-            rmt.wait_done()
+            self.rmt.write_pulses(2, pulses)
+            self.rmt.wait_done()
 
         mem32[GPIO_OUT_W1TS_REG] = MASK_CS
 
